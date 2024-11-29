@@ -7,15 +7,15 @@ Resources:
       Targets:
         - Arn:
             Fn::GetAtt:
-              - CustomHandlerLambdaFunction
+              - PrPulseLambdaFunction
               - Arn
-          Id: "CustomHandlerTarget"
+          Id: "PrPulseTarget"
 
-  CustomHandlerLambdaPermissionEvents:
+  PrPulseLambdaPermissionEvents:
     Type: AWS::Lambda::Permission
     Properties:
       FunctionName:
-        Ref: CustomHandlerLambdaFunction
+        Ref: PrPulseLambdaFunction
       Action: lambda:InvokeFunction
       Principal: events.amazonaws.com
       SourceArn:
