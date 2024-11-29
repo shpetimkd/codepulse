@@ -1,0 +1,19 @@
+service: codepulse-service
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+plugins:
+  - serverless-webpack
+  - serverless-tscpaths
+  - serverless-offline
+
+functions:
+  customHandler:
+    handler: ./src/handlers/customEvent.status
+
+
+resources:
+  - ${file(./config/resources/prPulse.bridge.yml)}
