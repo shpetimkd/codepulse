@@ -1,0 +1,31 @@
+Resources:
+  MyCustomEventBridgeRule:
+    Type: AWS::Events::Rule
+    Properties:
+      ScheduleExpression: rate(2 minutes)
+      State: ENABLED
+      Targets:
+        - Arn:
+            Fn::GetAtt:
+              - CustomHandlerLambdaFunction
+              - Arn
+          Id: "CustomHandlerTarget"
+
+  CustomHandlerLambdaPermissionEvents:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName:
+        Ref: CustomHandlerLambdaFunction
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn:
+        Fn::GetAtt:
+          - MyCustomEventBridgeRule
+          - Arn
+
+Outputs:
+  EventBridgeRuleArn:
+    Value:
+      Ref: MyCustomEventBridgeRule
+    Export:
+      Name: EventBridgeRuleArn

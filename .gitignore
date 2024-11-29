@@ -1,0 +1,19 @@
+# package directories
+node_modules/
+jspm_packages/
+
+# Serverless directories
+.serverless/
+
+# Jest coverage
+coverage/
+
+# Custom build directories
+.build/
+.webpack/
+
+# Other files
+package-lock.json
+.DS_STORE
+docker
+.vscode
