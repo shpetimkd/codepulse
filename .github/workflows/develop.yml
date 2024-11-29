@@ -1,4 +1,4 @@
-name: Deploy to AWS using Serverless
+name: CodePusle Deploy to Dev
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  deploy:
+  deploy-dev:
     runs-on: ubuntu-latest
 
     steps:
